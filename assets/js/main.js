@@ -1,31 +1,44 @@
 /**
  * main.js
- * Handles responsive header layout switching
+ * Handles responsive header layout and smooth scrolling
  * Author: Jude Andrew Reyes
  */
 
-// Cache DOM elements for efficiency
+// Cache DOM elements
 const body = document.body;
-const nav = document.querySelector('nav');
 
-// Function to adjust layout based on screen width
+// ---------------------------
+// 1. Header Layout Adjustment
+// ---------------------------
 function adjustHeaderLayout() {
     const isMobile = window.innerWidth <= 600;
 
     if (isMobile) {
-        // Add a mobile-specific class
         body.classList.add('mobile');
     } else {
-        // Remove mobile-specific class
         body.classList.remove('mobile');
     }
 
-    // Debug log to verify state
     console.log(`Layout set to: ${isMobile ? 'MOBILE' : 'DESKTOP'}`);
 }
 
-// Initial check on page load
+// Initial check
 adjustHeaderLayout();
 
 // Listen for screen resize
 window.addEventListener('resize', adjustHeaderLayout);
+
+// ---------------------------
+// 2. Smooth Scroll
+// ---------------------------
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+    });
+});
