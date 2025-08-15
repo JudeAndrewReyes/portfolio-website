@@ -125,6 +125,7 @@ nav {
     padding: 1rem;
     border-radius: 6px;
     transition: transform 0.3s ease, background 0.3s ease;
+    text-decoration: none; /* Prevent underline */
 }
 
 .project:hover {
@@ -135,6 +136,11 @@ nav {
 .project img {
     max-width: 100%;
     border-radius: 6px;
+}
+
+.project h3, .project p {
+    color: var(--text); /* Ensure text color matches your design */
+    text-decoration: none; /* Prevent underline */
 }
 
 /* ===== CONTACT SECTION ===== */
