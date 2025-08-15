@@ -1,0 +1,192 @@
+/* =========================================
+   1. RESET & BASE
+   ========================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif; /* From README */
+    background-color: #f8f9fa;
+    color: #212529;
+    line-height: 1.6;
+}
+
+h1, h2, h3 {
+    font-weight: 700;
+}
+
+a {
+    color: #007BFF; /* Accessible blue */
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+
+/* =========================================
+   2. HEADER & NAVIGATION
+   ========================================= */
+header {
+    background-color: #343a40;
+    color: white;
+    padding: 1rem 2rem;
+}
+
+nav {
+    display: flex;
+    flex-wrap: wrap; /* Allows logo + nav to wrap on small screens */
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.nav-links {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+}
+
+.nav-links a {
+    color: white;
+    font-weight: 500;
+}
+
+/* Mobile: logo on top, nav below */
+@media (max-width: 600px) {
+    nav {
+        flex-direction: column;
+        align-items: flex-start; /* Change to center if preferred */
+    }
+    .nav-links {
+        margin-top: 0.5rem;
+    }
+}
+
+/* =========================================
+   3. SECTIONS (GLOBAL)
+   ========================================= */
+section {
+    max-width: 1100px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+/* =========================================
+   4. HERO SECTION
+   ========================================= */
+#hero {
+    text-align: center;
+    padding: 4rem 1rem;
+    background: linear-gradient(135deg, #007BFF, #6C63FF);
+    color: white;
+}
+
+#hero .btn {
+    display: inline-block;
+    background-color: #ffc107;
+    color: #212529;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    font-weight: bold;
+    margin-top: 1rem;
+}
+#hero .btn:hover {
+    background-color: #e0a800;
+}
+
+/* =========================================
+   5. PROJECTS
+   ========================================= */
+.project-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.project {
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    text-align: center;
+    transition: transform 0.2s ease;
+}
+.project:hover {
+    transform: translateY(-5px);
+}
+
+.project img {
+    width: 100%;
+    height: auto;
+}
+
+.project h3 {
+    padding: 1rem 0 0.5rem;
+    color: #007BFF;
+}
+
+.project p {
+    padding: 0 1rem 1rem;
+    font-size: 0.95rem;
+    color: #555;
+}
+
+/* Responsive Projects Layout */
+@media (min-width: 600px) {
+    .project-list {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    .project {
+        flex: 1 1 calc(50% - 1rem);
+    }
+}
+@media (min-width: 900px) {
+    .project {
+        flex: 1 1 calc(33.333% - 1rem);
+    }
+}
+
+/* =========================================
+   6. CONTACT SECTION
+   ========================================= */
+#contact p,
+#contact a {
+    font-size: 1rem;
+}
+
+/* =========================================
+   7. FOOTER
+   ========================================= */
+footer {
+    background-color: #343a40;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+}
+
+/* =========================================
+   8. MOBILE DETECTION LAYOUT (via JS)
+   ========================================= */
+/* Default (desktop) - already handled above */
+
+body.mobile nav {
+    flex-direction: column;
+    align-items: center; /* Center name & links */
+    text-align: center;
+}
+
+body.mobile .nav-links {
+    margin-top: 0.5rem;
+    flex-direction: row;
+    gap: 1rem;
+}
