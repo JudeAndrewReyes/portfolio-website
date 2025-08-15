@@ -1,192 +1,252 @@
-/* =========================================
-   1. RESET & BASE
-   ========================================= */
+/* ===== RESET ===== */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* ===== GLOBAL COLORS ===== */
+:root {
+    --primary-bg: #1A1A1A;
+    --accent: #FF5722;
+    --accent-secondary: #E91E63;
+    --text: #FFFFFF;
+    --text-muted: #757575;
+}
+
+/* ===== BODY ===== */
 body {
-    font-family: 'Poppins', sans-serif; /* From README */
-    background-color: #f8f9fa;
-    color: #212529;
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--primary-bg);
+    color: var(--text);
     line-height: 1.6;
 }
 
-h1, h2, h3 {
-    font-weight: 700;
-}
-
-a {
-    color: #007BFF; /* Accessible blue */
-    text-decoration: none;
-}
-a:hover {
-    text-decoration: underline;
-}
-
-/* =========================================
-   2. HEADER & NAVIGATION
-   ========================================= */
+/* ===== HEADER / NAVIGATION ===== */
 header {
-    background-color: #343a40;
-    color: white;
+    background: var(--primary-bg);
     padding: 1rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 nav {
     display: flex;
-    flex-wrap: wrap; /* Allows logo + nav to wrap on small screens */
     justify-content: space-between;
     align-items: center;
-    max-width: 1100px;
-    margin: 0 auto;
-}
-
-.logo {
-    font-size: 1.5rem;
-    font-weight: 700;
 }
 
 .nav-links {
-    display: flex;
-    gap: 1.5rem;
     list-style: none;
+    display: flex;
+    gap: 2rem;
 }
 
 .nav-links a {
-    color: white;
-    font-weight: 500;
+    text-decoration: none;
+    color: var(--text);
+    font-weight: bold;
+    transition: color 0.3s ease;
 }
 
-/* Mobile: logo on top, nav below */
-@media (max-width: 600px) {
-    nav {
-        flex-direction: column;
-        align-items: flex-start; /* Change to center if preferred */
-    }
-    .nav-links {
-        margin-top: 0.5rem;
-    }
+.nav-links a:hover {
+    color: var(--accent);
 }
 
-/* =========================================
-   3. SECTIONS (GLOBAL)
-   ========================================= */
-section {
-    max-width: 1100px;
-    margin: 2rem auto;
-    padding: 0 1rem;
+/* ===== CONNECT BUTTON ===== */
+.connect-btn {
+    background: var(--accent);
+    color: var(--text);
+    border: none;
+    padding: 0.5rem 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background 0.3s ease;
 }
 
-/* =========================================
-   4. HERO SECTION
-   ========================================= */
+.connect-btn:hover {
+    background: var(--accent-secondary);
+}
+
+/* ===== HERO SECTION ===== */
 #hero {
     text-align: center;
-    padding: 4rem 1rem;
-    background: linear-gradient(135deg, #007BFF, #6C63FF);
-    color: white;
+    padding: 4rem 2rem;
 }
 
-#hero .btn {
-    display: inline-block;
-    background-color: #ffc107;
-    color: #212529;
+#hero h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+#hero p {
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+}
+
+.btn {
+    background: var(--accent);
+    color: var(--text);
     padding: 0.75rem 1.5rem;
+    border: none;
     border-radius: 4px;
+    text-decoration: none;
     font-weight: bold;
-    margin-top: 1rem;
-}
-#hero .btn:hover {
-    background-color: #e0a800;
+    transition: background 0.3s ease;
 }
 
-/* =========================================
-   5. PROJECTS
-   ========================================= */
+.btn:hover {
+    background: var(--accent-secondary);
+}
+
+/* ===== ABOUT SECTION ===== */
+#about {
+    padding: 3rem 2rem;
+    max-width: 800px;
+    margin: auto;
+    text-align: center;
+}
+
+/* ===== PROJECTS SECTION ===== */
+#projects {
+    padding: 3rem 2rem;
+}
+
 .project-list {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
 }
 
 .project {
-    background-color: white;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-    text-align: center;
-    transition: transform 0.2s ease;
+    background: #222;
+    padding: 1rem;
+    border-radius: 6px;
+    transition: transform 0.3s ease, background 0.3s ease;
 }
+
 .project:hover {
     transform: translateY(-5px);
+    background: #2a2a2a;
 }
 
 .project img {
-    width: 100%;
-    height: auto;
+    max-width: 100%;
+    border-radius: 6px;
 }
 
-.project h3 {
-    padding: 1rem 0 0.5rem;
-    color: #007BFF;
+/* ===== CONTACT SECTION ===== */
+#contact {
+    padding: 3rem 2rem;
+    text-align: center;
 }
 
-.project p {
-    padding: 0 1rem 1rem;
-    font-size: 0.95rem;
-    color: #555;
-}
-
-/* Responsive Projects Layout */
-@media (min-width: 600px) {
-    .project-list {
-        flex-direction: row;
-        flex-wrap: wrap;
-    }
-    .project {
-        flex: 1 1 calc(50% - 1rem);
-    }
-}
-@media (min-width: 900px) {
-    .project {
-        flex: 1 1 calc(33.333% - 1rem);
-    }
-}
-
-/* =========================================
-   6. CONTACT SECTION
-   ========================================= */
-#contact p,
 #contact a {
-    font-size: 1rem;
+    color: var(--accent);
+    text-decoration: none;
 }
 
-/* =========================================
-   7. FOOTER
-   ========================================= */
+#contact a:hover {
+    color: var(--accent-secondary);
+}
+
+/* ===== MODAL ===== */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+    animation: fadeIn 0.3s ease;
+}
+
+.modal-content {
+    background-color: #222;
+    margin: 5% auto;
+    padding: 2rem;
+    border-radius: 8px;
+    max-width: 500px;
+    color: var(--text);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+}
+
+.modal-content h2 {
+    margin-bottom: 1rem;
+    color: var(--accent);
+}
+
+.modal-content label {
+    display: block;
+    margin: 0.5rem 0 0.25rem;
+}
+
+.modal-content input,
+.modal-content textarea {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    background: #333;
+    border: 1px solid var(--text-muted);
+    border-radius: 4px;
+    color: var(--text);
+}
+
+.modal-content button {
+    background: var(--accent);
+    color: var(--text);
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.modal-content button:hover {
+    background: var(--accent-secondary);
+}
+
+.close {
+    color: var(--text-muted);
+    float: right;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: var(--accent);
+}
+
+/* Quick Links inside Modal */
+.quick-links {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+}
+
+.quick-links a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+.quick-links a:hover {
+    color: var(--accent-secondary);
+}
+
+/* ===== FOOTER ===== */
 footer {
-    background-color: #343a40;
-    color: white;
     text-align: center;
-    padding: 1rem;
+    padding: 2rem;
+    background: #111;
+    color: var(--text-muted);
 }
 
-/* =========================================
-   8. MOBILE DETECTION LAYOUT (via JS)
-   ========================================= */
-/* Default (desktop) - already handled above */
-
-body.mobile nav {
-    flex-direction: column;
-    align-items: center; /* Center name & links */
-    text-align: center;
-}
-
-body.mobile .nav-links {
-    margin-top: 0.5rem;
-    flex-direction: row;
-    gap: 1rem;
+/* ===== ANIMATIONS ===== */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }

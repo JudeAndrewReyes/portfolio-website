@@ -7,38 +7,35 @@
     <title>JUDE ANDREW REYES | Portfolio</title>
     <!-- CSS Link -->
     <link rel="stylesheet" href="assets/css/style.css">
-    <!-- Google Fonts (Optional) -->
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-RRJMFLM98X"></script>
     <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-RRJMFLM98X');
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-RRJMFLM98X');
     </script>
-    <!-- End Google Analytics -->
-
 </head>
 <body>
 
     <!-- Header / Navigation -->
     <header>
         <nav>
-            <h1 class="logo">Jude Andrew Reyes</h1>
             <ul class="nav-links">
+                <li><a href="#hero">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
             </ul>
+            <button class="connect-btn" id="connectBtn">Connect</button>
         </nav>
     </header>
 
     <!-- Hero Section -->
     <section id="hero">
-        <h2>Hi, I'm Jude Andrew Reyes</h2>
-        <p>Aspiring Web Developer | Freelancer</p>
+        <h1>Hi, I'm <span class="highlight">Jude Andrew Reyes</span></h1>
+        <p>Junior Web Developer | Freelancer</p>
         <a href="#projects" class="btn">View My Work</a>
     </section>
 
@@ -50,7 +47,7 @@
 
     <!-- Projects Section -->
     <section id="projects">
-        <h2>Projects</h2>
+        <h2>Recent Projects</h2>
         <div class="project-list">
             <div class="project">
                 <img src="assets/images/400x250-1.svg" alt="Project 1 thumbnail">
@@ -70,21 +67,44 @@
         </div>
     </section>
 
-
-
-    <!-- Contact Section -->
+    <!-- Contact Section (optional static info) -->
     <section id="contact">
         <h2>Contact Me</h2>
-        <p>Email: judeandrewd.reyes@gmail.com</p>
+        <p>Email: <a href="mailto:judeandrewd.reyes@gmail.com">judeandrewd.reyes@gmail.com</a></p>
         <p>GitHub: <a href="https://github.com/JudeAndrewReyes" target="_blank">JudeAndrewReyes</a></p>
     </section>
+
+    <!-- Modal for Connect -->
+    <div id="connectModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeModal">&times;</span>
+            <h2>Let's Connect</h2>
+            <form action="https://formspree.io/f/your-form-id" method="POST">
+                <label for="name">Name</label>
+                <input type="text" name="name" id="name" required>
+                
+                <label for="email">Email</label>
+                <input type="email" name="_replyto" id="email" required>
+                
+                <label for="message">Message</label>
+                <textarea name="message" id="message" rows="4" required></textarea>
+                
+                <button type="submit" class="btn-submit">Send Message</button>
+            </form>
+            <div class="quick-links">
+                <p>Or reach me directly:</p>
+                <a href="mailto:judeandrewd.reyes@gmail.com" class="link-email">📧 Email</a> | 
+                <!-- <a href="https://wa.me/639154578801" target="_blank" class="link-whatsapp">💬 WhatsApp</a> -->
+            </div>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer>
         <p>© 2025 Jude Andrew Reyes. All rights reserved.</p>
     </footer>
 
+    <!-- JS -->
     <script src="assets/js/main.js"></script>
-
 </body>
 </html>

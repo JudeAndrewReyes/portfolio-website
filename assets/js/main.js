@@ -1,11 +1,13 @@
 /**
  * main.js
- * Handles responsive header layout and smooth scrolling
+ * Handles responsive header layout, smooth scrolling, and modal logic
  * Author: Jude Andrew Reyes
  */
 
-// Cache DOM elements
 const body = document.body;
+const connectBtn = document.getElementById('connectBtn');
+const connectModal = document.getElementById('connectModal');
+const closeModal = document.getElementById('closeModal');
 
 // ---------------------------
 // 1. Header Layout Adjustment
@@ -13,32 +15,42 @@ const body = document.body;
 function adjustHeaderLayout() {
     const isMobile = window.innerWidth <= 600;
 
-    if (isMobile) {
-        body.classList.add('mobile');
-    } else {
-        body.classList.remove('mobile');
-    }
-
+    body.classList.toggle('mobile', isMobile);
     console.log(`Layout set to: ${isMobile ? 'MOBILE' : 'DESKTOP'}`);
 }
 
-// Initial check
 adjustHeaderLayout();
-
-// Listen for screen resize
 window.addEventListener('resize', adjustHeaderLayout);
 
 // ---------------------------
 // 2. Smooth Scroll
 // ---------------------------
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
+    anchor.addEventListener('click', e => {
         e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
+        const target = document.querySelector(anchor.getAttribute('href'));
         if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth'
-            });
+            target.scrollIntoView({ behavior: 'smooth' });
         }
     });
+});
+
+// ---------------------------
+// 3. Modal Functionality
+// ---------------------------
+connectBtn.addEventListener('click', () => {
+    connectModal.style.display = 'block';
+    document.body.style.overflow = 'hidden'; // Prevent background scroll
+});
+
+closeModal.addEventListener('click', () => {
+    connectModal.style.display = 'none';
+    document.body.style.overflow = ''; // Restore scroll
+});
+
+window.addEventListener('click', e => {
+    if (e.target === connectModal) {
+        connectModal.style.display = 'none';
+        document.body.style.overflow = '';
+    }
 });
